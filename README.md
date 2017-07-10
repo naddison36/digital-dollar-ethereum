@@ -42,6 +42,7 @@ Payments can also be based on the state of a smart contract. For example, fiat-b
 
 ## Actors
 ![Actors](./images/actors.png)
+
 Actor | Description
 ------|-----------
 Token Holder | is the entity that has deposited fiat currency to a financial institution. They are the customer of the financial institution and can be an individual, company, self managed super fund, trust, another financial institution or government.
@@ -112,13 +113,13 @@ Problems with financial institutions issuing digital currencies:
 
 ## Traditional Payment Schemes
 Traditional payment schemes covers:
-    * batched based, domestic payments. eg DE and BACS
-    * real time gross settlement (RTGS)
-    * real time payments. eg NPP, G3 and UK Faster Payments
-    * card schemes. eg Visa, Master Card and American Express
+* batched based, domestic payments. eg DE and BACS
+* real time gross settlement (RTGS)
+* real time payments. eg NPP, G3 and UK Faster Payments
+* card schemes. eg Visa, Master Card and American Express
 
 Problems with traditional payment schemes:
-* The infrastructure of tradition payment schemes are expensive which limits the participants to larger financial insititutions that can afford the upfront capital costs.
+* The infrastructure of tradition payment schemes are expensive which limits the participants to larger financial institutions that can afford the upfront capital costs.
 * Payment schemes that settle between financial institutions on a net deferred basis create a credit default risk.
 * Direct debits take 3 days to clear in Australia. This can be worked around with NPP's request for payment but it requires action by the debtor.
 * Escrow services for fiat currencies are expensive and time consuming to establish.
@@ -126,15 +127,14 @@ Problems with traditional payment schemes:
 # Glossary of Terms
 | Term | Description |
 | -----|------------ |
-| <a id="distributed-ledger"></a>Distributed Ledger | a peer-to-peer, append only datastore that uses consensus to synchonise cryptographically secured data. |
 | <a id="blockchain"></a>Blockchain | is a distributed ledger that batches transactions into blocks. |
-| <a id="blockchain-identity"></a>Blockchain identity | In Ethereum is is referred to as an externally owned account. In Bitcoin this is referred to an address. This concept does not currently exist in Hyperledger Fabric. |
+| <a id="blockchain-identity"></a>Blockchain identity | In Ethereum is is referred to as an externally owned account. In Bitcoin this is referred to an address. |
 | <a id="blockchain-contract"></a>Blockchain contract | is used instead of the term smart contract. Is the deployment of both code and state onto a blockchain platform |
-| <a id="smart-contract"></a>Smart Contract | An instance of a distributed object deployed on a distributed ledger. |
+| <a id="distributed-ledger"></a>Distributed Ledger | a peer-to-peer, append only datastore that uses consensus to synchonise cryptographically secured data. |
 | <a id="distributed-object"></a>Distributed Object | Is the deployment of both state logic onto a Blockchain/distributed ledger. |
 | State | Structured data held in variables of a distributed object. |
 | Logic | Rules defined in functions that read and modify a distributed object's state. |
-| <a id="distributed-services"></a>Distributed Services | Are commercial services deployed on a distributed ledger platforms. Fir example, tokenisation of assets |
-| <a id="token"></a>Token | A digital unit of a real or virtual asset that can be assigned to a blockchain identity. |
-| <a id="transactions"></a>Transactions | A signed instruction that changes the state of a distributed ledger. |
 | <a id="fiat-currency"></a>Fiat Currency | legal tender whose value is backed by the government that issued it. For example, Australian dollars issued by the Reserved Bank of Australia. |
+| <a id="smart-contract"></a>Smart Contract | An instance of a distributed object deployed on a distributed ledger. |
+| <a id="token"></a>Token | A digital representation of a unit of value of a real asset that can be assigned to a blockchain identity. It is essentially a balance of asset units for each blockchain entity which can then be transferred between blockchain identities. Assets can be fiat currency, physical commodities, ownership or rights to some good or service. |
+| <a id="transactions"></a>Transactions | A signed instruction that changes the state of a distributed ledger. |
