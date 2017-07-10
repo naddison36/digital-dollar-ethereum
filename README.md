@@ -4,7 +4,7 @@ Fiat-Backed Token on a Distributed Ledger
 # Problem Statement
 *A model for creating a [fiat](#fiat-currency)-backed [token](#token) that can be used by the next generation of services deployed on a [distributed ledger](#distributed-ledger).*
 
-At its heart, the model has a [smart contract](#smart-contract) that facilitates the exchange of fiat-backed tokens between [distributed customers](#distributed-customers) who have deposited fiat with financial institutions. The contract also facilitates the settlement of real fiat currency between financial institution accounts held by a third party settlement institution.
+At its heart, the model has a [smart contract](#smart-contract) that facilitates the exchange of fiat-backed tokens between token holders who have deposited fiat with a financial institution. The contract also facilitates the settlement of fiat currency between financial institution accounts held by a third party settlement institution.
 
 # Why a distributed ledger?
 ## Alternative Payment Rail
@@ -47,7 +47,7 @@ Actor | Description
 Token Holder | is the entity that has deposited fiat currency to a financial institution. They are the customer of the financial institution and can be an individual, company, self managed super fund, trust, another financial institution or government.
 Financial Institution | holds the fiat deposited by the Token Holder. This is called the Authorised Deposit-Taking Institution (ADI) in Australia and includes banks, building societies and credit unions.
 Settlement Institution | settles fiat currency between the participating financial institutions. A financial institution that offers clearing and settlement services is usually called a Clearing House but this term can be confusing here as the clearing is done on the blockchain - not the Clearing House.
-Blockchain Contract | is code deployed to the blockchain that maintains the fiat-backed token balances of the token holders and fiat currency held in financial institution accounts at the settlement institution.
+Blockchain Contract | is code deployed to the blockchain that maintains the fiat-backed token balances of the token holders and fiat collateral held in financial institution accounts at the settlement institution.
 
 ### Responsibilities
 #### Financial Institutions
@@ -137,5 +137,4 @@ Problems with traditional payment schemes:
 | <a id="distributed-services"></a>Distributed Services | Are commercial services deployed on a distributed ledger platforms. Fir example, tokenisation of assets |
 | <a id="token"></a>Token | A digital unit of a real or virtual asset that can be assigned to a blockchain identity. |
 | <a id="transactions"></a>Transactions | A signed instruction that changes the state of a distributed ledger. |
-| <a id="distributed-customers"></a>Distributed Customers | Are users of the distributed ledger that own, or are in control, of asset-backed tokens like a fiat-backed token. |
 | <a id="fiat-currency"></a>Fiat Currency | legal tender whose value is backed by the government that issued it. For example, Australian dollars issued by the Reserved Bank of Australia. |
