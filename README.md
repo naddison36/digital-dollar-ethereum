@@ -103,9 +103,9 @@ Problems with central banks issuing digital currencies:
 ## Financial Institution Digital Currencies
 There are few ways financial institutions can issue their own digital currency. The main ones are:
 1. issue directly to their customers with no interoperability with other financial institutions
-![Issued by a Financial Institution directly to customers](./images/financialInstitutionDirectlyIssued.png)
+![Issued by a Financial Institution directly to customers](./images/FinancialInstitutionDirectlyIssued.png)
 2. issue on a platform like Ripple that allows market makers to bridge the movement of fiat-backed tokens between financial institutions.
-![Issued by a Financial Institution to a blockchain](./images/financialInstitutionPlatformIssued.png)
+![Issued by a Financial Institution to a blockchain](./images/FinancialInstitutionPlatformIssued.png)
 
 Problems with financial institutions issuing digital currencies:
 * Digital currencies issued by different financial institutions will be priced differently as they each have different credit risks to the depositors. One digital dollar at a large, conservative bank will be valued differently to a digital dollar at a smaller, community bank.
