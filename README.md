@@ -93,6 +93,7 @@ Problems with native digital currencies:
 
 ## Central Bank Issued Digital Currencies
 Are tokens issued by a central bank like it mints physical cash. These tokens would then be transferred to financial instututions that would then transfer them to their customers. The tokens do not have to be on a blockchain.
+
 ![Issued by a Central Bank](./images/centralBankIssued.png)
 
 Problems with central banks issuing digital currencies:
@@ -102,9 +103,12 @@ Problems with central banks issuing digital currencies:
 
 ## Financial Institution Digital Currencies
 There are few ways financial institutions can issue their own digital currency. The main ones are:
-1. issue directly to their customers with no interoperability with other financial institutions
+1. issue directly to their customers with no interoperability with other financial institutions.
+
 ![Issued by a Financial Institution directly to customers](./images/FinancialInstitutionDirectlyIssued.png)
+
 2. issue on a platform like Ripple that allows market makers to bridge the movement of fiat-backed tokens between financial institutions.
+
 ![Issued by a Financial Institution to a blockchain](./images/FinancialInstitutionPlatformIssued.png)
 
 Problems with financial institutions issuing digital currencies:
