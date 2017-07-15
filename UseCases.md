@@ -35,7 +35,7 @@
 * emit an account balance update event.
 
 ## Token holder transfers fiat-backed tokens from their blockchain account to another blockchain account
-* Return a error if the:
+* Return an error if the:
     * transfer amount is negative.
     * token holder does not have a blockchain account setup by their financial institution.
     * amount to be transferred is greater than the fiat-backed tokens available in the blockchain account.
@@ -46,10 +46,10 @@
 * decrease the fiat collateral held by the debtor agent.
 * increase the unsettled balance of the creditor agent.
 * increase the fiat collateral held by the creditor agent.
-* emit an token holder transfer event for the debtor.
-* emit an token holder transfer event for the creditor.
-* emit an financial institution transfer event for the debtor agent.
-* emit an financial institution transfer event for the creditor agent.
+* emit a token holder transfer event for the debtor.
+* emit a token holder transfer event for the creditor.
+* emit a financial institution transfer event for the debtor agent.
+* emit a financial institution transfer event for the creditor agent.
 
 ## Settlement institution settles fiat currency between financial institutions from transactions between token holders.
 * Return a failure if the settlement institution is not the transaction originator.
