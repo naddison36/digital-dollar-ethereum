@@ -8,14 +8,14 @@ At its heart, the model has a [smart contract](#smart-contract) that facilitates
 
 # Why a distributed ledger?
 ## Alternative Payment Rail
-**Credit transfers** of a fiat currency is simple to do but that's already available in a lot of places around the world using traditional payments technology. The key difference is the holder of the fiat-backed tokens are in control. They only need to sign transaction and then broadcast their transfer instruction for the transfer of their fiat-backed tokens to be executed. They do not need to send instructions to a mediating financial institution that then executes the transfer with other financial institutions on their behalf.
+**Credit transfers** of a fiat currency are simple to do but that's already available in a lot of places around the world using traditional payments technology. The key difference is the holder of the fiat-backed tokens are in control. They only need to sign a transaction and then broadcast it for the transfer of their fiat-backed tokens to be executed. They do not need to send instructions to a mediating financial institution that then executes the transfer with other financial institutions on their behalf.
 
-**Direct debits** can also be support like traditional payment systems. One advantage over traditional technology is debit limits that can be dynamically set by the debtor to each of their creditors. Coordinating debit limits between banks in realtime is just too hard to achieve without a consensus layer with signed transactions.
+**Direct debits** can also be supported like traditional payment systems. One advantage over traditional technology is debit limits that can be dynamically set by the debtor to each of their creditors. Coordinating debit limits between banks in real time is just too hard to achieve without a consensus layer with signed transactions.
 
-**Escrow** of a fiat currency is expensive and time consuming using traditional means but can be done easily on a distributed ledger. Fiat-backed tokens can be entrusted to a third party or a smart contract which will only execute when certain conditions have been met. It's also posible to setup multi signature escrows where m of n parties need to sign a transaction for the fiat-backed tokens to be released.
+**Escrow** of a fiat currency is expensive and time-consuming using traditional means but can be done easily on a distributed ledger. Fiat-backed tokens can be entrusted to a third party or a smart contract which will only execute when certain conditions have been met. It's also possible to setup multi signature escrows where m of n parties need to sign a transaction for the fiat-backed tokens to be released.
 
 ## Delivery versus payment
-When combined with other asset backed tokens on a distributed ledger, assets can be exchanged for fiat currency in one atomic transaction. That is, the distributed ledger ensures a payment is made for the delivery of a asset.
+When combined with other asset backed tokens on a distributed ledger, assets can be exchanged for fiat currency in one atomic transaction. That is, the distributed ledger ensures a payment is made for the delivery of an asset.
 
 ## Programmable money
 When combined with smart contracts, payments can be made on conditions being met. This could be on condition of another transaction or elapsed time.
@@ -33,11 +33,11 @@ Payments can also be based on the state of a smart contract. For example, fiat-b
 * The settlement institution will move fiat held in financial institution accounts on a net deferred basis.
 
 ## Benefits over alternative models
-* Complies with KYC/AML laws as the financial institutions on-board new customers.
+* Complies with KYC/AML laws as the financial institutions onboard new customers.
 * New fiat currency is not issued into the economy's monetary supply as the fiat-backed token just represents a balance of already issued fiat currency held at a settlement institution.
 * Payments can be made to a payee (Creditor) with a different financial institution to the payer (Debtor).
 * Financial Institutions can still create money through lending.
-* Regulators can get realtime visibility of financial transactions. This also reduces the obligations/costs of financial institutions reporting to the regulators.
+* Regulators can get real time visibility of financial transactions. This also reduces the obligations/costs of financial institutions reporting to the regulators.
 * Customers are in control of their fiat currency. They do not need to instruct their financial institution to execute transactions on their behalf in closed payment schemes.
 
 ## Actors
@@ -67,7 +67,7 @@ Blockchain Contract | is code deployed to the blockchain that maintains the fiat
 * Can instruct their financial institution to convert their deposited fiat currency to fiat-backed tokens. The token holder can not directly issue fiat-backed tokens to the blockchain contract.
 
 #### Blockchain Contract
-* Ensures financial institutions can not issue more fiat-backed tokens to their customers, the token holders,than the fiat currency they have held in their account at the settlement institution.
+* Ensures financial institutions can not issue more fiat-backed tokens to their customers, the token holders, than the fiat currency they have held in their account at the settlement institution.
 * Ensures there are enough fiat-backed tokens in the senders account when transferring between token holders.
 * Reports the amounts to be settled between financial institutions
 
