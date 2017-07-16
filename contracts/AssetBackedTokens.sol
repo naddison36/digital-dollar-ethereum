@@ -116,7 +116,7 @@ contract AssetBackedTokens
 
     event EmitTokenTransfer(
         address indexed tokenHolder,
-        int amount,                 // amount of tokens being increased (positive) or decreased (megative)
+        int amount,                 // amount of tokens being increased (positive) or decreased (negative)
         uint availableTokens);      // token holder's available tokens after the update
 
     event EmitAssetTransfer(
@@ -133,7 +133,7 @@ contract AssetBackedTokens
     event EmitTokenUpdate(
         address indexed assetHolder,
         address indexed tokenHolder,
-        int amount,                 // amount of tokens being increased (positive) or decreased (megative)
+        int amount,                 // amount of tokens being increased (positive) or decreased (negative)
         uint availableTokens,       // token holder's available tokens after the update
         uint issuedTokens);         // asset holder's issued tokens after the update
     
