@@ -38,7 +38,7 @@ Payments can also be based on the state of a smart contract. For example, asset-
 * Customers are in control of their fiat currency. They do not need to instruct their financial institution to execute transactions on their behalf in closed payment schemes.
 
 ## Actors
-![Actors](./images/actors.png)
+![Actors](./images/AssetBackedTokenActors.png)
 
 Actor | Description
 ------|-----------

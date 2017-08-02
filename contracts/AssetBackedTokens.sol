@@ -62,9 +62,6 @@ contract AssetBackedTokens
     /// @return Token symbol
     uint8 public decimals;
 
-    /// @return Total amount of tokens
-    uint totalSupply = 0;
-
     // Externally owned account (token holder's address) mapped to the token account details
     mapping (address => TokenAccount) public tokenAccounts;
     
@@ -285,13 +282,17 @@ contract AssetBackedTokens
                 // increase or decrease the settled assets by the number of unsettled assets
                 if (unsettledAssets > 0)
                 {
-                    // TODO need to handle overflow
                     assetAccounts[assetHolder].settledAssets += uint(unsettledAssets);
+
+                    // check for overflows
+                    require(assetAccounts[assetHolder].settledAssets > uint(unsettledAssets));
                 }
                 else {
-                    // TODO need to handle overflow
                     // convert the negative unsettled amount to a positive amount
                     assetAccounts[assetHolder].settledAssets -= uint(-unsettledAssets);
+
+                    // check for overflows
+                    require(assetAccounts[assetHolder].settledAssets < uint(-unsettledAssets));
                 }
                 
                 // reset the unsettled assets back to zero
@@ -335,7 +336,6 @@ contract AssetBackedTokens
         {
             uintAmount = uint(amount);
 
-            // TODO need to check for overflow
             // the asset holder has enough assets held at the settlement institution to issue more
             // tokens to the asset holder's token holders
             require(int(assetAccounts[assetHolder].settledAssets) +
@@ -343,6 +343,10 @@ contract AssetBackedTokens
 
             assetAccounts[assetHolder].issuedTokens += uintAmount;
             tokenAccounts[tokenHolder].availableTokens += uintAmount;
+
+            // check for overflows
+            require(assetAccounts[assetHolder].issuedTokens > uintAmount);
+            require(tokenAccounts[tokenHolder].availableTokens > uintAmount);
         }
         // decreasing (withdrawing) tokens
         else if (amount < 0)
@@ -354,6 +358,10 @@ contract AssetBackedTokens
 
             assetAccounts[assetHolder].issuedTokens -= uintAmount;
             tokenAccounts[tokenHolder].availableTokens -= uintAmount;
+
+            // check for overflows
+            require(assetAccounts[assetHolder].issuedTokens < uintAmount);
+            require(tokenAccounts[tokenHolder].availableTokens < uintAmount);
         }
         
         EmitTokenUpdate(
@@ -391,5 +399,11 @@ contract AssetBackedTokens
         }
 
         assetHolders = newassetHolders;
+    }
+
+    // return list of asset holders
+    function getAssetHolders() public constant returns (address[])
+    {
+        return assetHolders;
     }
 }
