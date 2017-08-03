@@ -219,7 +219,8 @@ contract AssetBackedTokens
         assetAccounts[sendingAssetHolder].unsettledAssets -= int(amount);
         assetAccounts[sendingAssetHolder].issuedTokens -= amount;
 
-        // TODO check for overflows
+        // check sender's unsettled balances is still positive or zero
+        assert(assetAccounts[sendingAssetHolder].unsettledAssets >= 0);
         
         // increase the assets for the receiving asset holder
         assetAccounts[receivingAssetHolder].unsettledAssets += int(amount);
@@ -268,9 +269,13 @@ contract AssetBackedTokens
 
         // increase or decrease the unsettled assets
         assetAccounts[assetHolder].unsettledAssets += amount;
-
-        // check for overflow
-        assert(assetAccounts[assetHolder].unsettledAssets > amount);
+        
+        if (amount > 0) {
+            // check for overflow
+            assert(assetAccounts[assetHolder].unsettledAssets > amount);
+        } else {
+            assert(assetAccounts[assetHolder].unsettledAssets > 0);
+        }
         
         // Emit event for the update of the asset holder's unsettled assets
         EmitAssetUpdate(assetHolder, amount, assetAccounts[assetHolder].unsettledAssets);
@@ -300,7 +305,8 @@ contract AssetBackedTokens
                     // convert the negative unsettled amount to a positive amount
                     assetAccounts[assetHolder].settledAssets -= uint(-unsettledAssets);
 
-                    // TODO check for overflows
+                    // check balance is still positive
+                    assert(assetAccounts[assetHolder].settledAssets > 0);
                 }
                 
                 // reset the unsettled assets back to zero
@@ -366,8 +372,6 @@ contract AssetBackedTokens
 
             assetAccounts[assetHolder].issuedTokens -= uintAmount;
             tokenAccounts[tokenHolder].availableTokens -= uintAmount;
-
-            // TODO check for overflows
         }
         
         EmitTokenUpdate(
