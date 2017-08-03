@@ -218,10 +218,16 @@ contract AssetBackedTokens
         // decrease the assets for the sending asset holder
         assetAccounts[sendingAssetHolder].unsettledAssets -= int(amount);
         assetAccounts[sendingAssetHolder].issuedTokens -= amount;
+
+        // TODO check for overflows
         
         // increase the assets for the receiving asset holder
         assetAccounts[receivingAssetHolder].unsettledAssets += int(amount);
         assetAccounts[receivingAssetHolder].issuedTokens += amount;
+
+        // check for overflows
+        assert(assetAccounts[receivingAssetHolder].unsettledAssets > int(amount));
+        assert(assetAccounts[receivingAssetHolder].issuedTokens > amount);
 
         // Emit events to the sending and receiving asset holders
         EmitAssetTransfer(sendingAssetHolder, int(-amount), assetAccounts[sendingAssetHolder].unsettledAssets, assetAccounts[sendingAssetHolder].issuedTokens);
@@ -255,13 +261,16 @@ contract AssetBackedTokens
         }
 
         // the asset holder's remaining assets is required to be greater than or equal to the tokens issued by the asset holder
-        require(
+        assert(
             int(assetAccounts[assetHolder].settledAssets) +
             assetAccounts[assetHolder].unsettledAssets +
             amount >= int(assetAccounts[assetHolder].issuedTokens) );
 
         // increase or decrease the unsettled assets
         assetAccounts[assetHolder].unsettledAssets += amount;
+
+        // check for overflow
+        assert(assetAccounts[assetHolder].unsettledAssets > amount);
         
         // Emit event for the update of the asset holder's unsettled assets
         EmitAssetUpdate(assetHolder, amount, assetAccounts[assetHolder].unsettledAssets);
@@ -285,14 +294,13 @@ contract AssetBackedTokens
                     assetAccounts[assetHolder].settledAssets += uint(unsettledAssets);
 
                     // check for overflows
-                    require(assetAccounts[assetHolder].settledAssets > uint(unsettledAssets));
+                    assert(assetAccounts[assetHolder].settledAssets > uint(unsettledAssets));
                 }
                 else {
                     // convert the negative unsettled amount to a positive amount
                     assetAccounts[assetHolder].settledAssets -= uint(-unsettledAssets);
 
-                    // check for overflows
-                    require(assetAccounts[assetHolder].settledAssets < uint(-unsettledAssets));
+                    // TODO check for overflows
                 }
                 
                 // reset the unsettled assets back to zero
@@ -338,15 +346,15 @@ contract AssetBackedTokens
 
             // the asset holder has enough assets held at the settlement institution to issue more
             // tokens to the asset holder's token holders
-            require(int(assetAccounts[assetHolder].settledAssets) +
+            assert(int(assetAccounts[assetHolder].settledAssets) +
                 assetAccounts[assetHolder].unsettledAssets >= int(assetAccounts[assetHolder].issuedTokens) + amount);
 
             assetAccounts[assetHolder].issuedTokens += uintAmount;
             tokenAccounts[tokenHolder].availableTokens += uintAmount;
 
             // check for overflows
-            require(assetAccounts[assetHolder].issuedTokens > uintAmount);
-            require(tokenAccounts[tokenHolder].availableTokens > uintAmount);
+            assert(assetAccounts[assetHolder].issuedTokens > uintAmount);
+            assert(tokenAccounts[tokenHolder].availableTokens > uintAmount);
         }
         // decreasing (withdrawing) tokens
         else if (amount < 0)
@@ -354,14 +362,12 @@ contract AssetBackedTokens
             uintAmount = uint(-amount);
 
             // the token holder's available tokens is required to be greater than the amount of tokens being withdrawn
-            require(tokenAccounts[tokenHolder].availableTokens > uintAmount);
+            assert(tokenAccounts[tokenHolder].availableTokens > uintAmount);
 
             assetAccounts[assetHolder].issuedTokens -= uintAmount;
             tokenAccounts[tokenHolder].availableTokens -= uintAmount;
 
-            // check for overflows
-            require(assetAccounts[assetHolder].issuedTokens < uintAmount);
-            require(tokenAccounts[tokenHolder].availableTokens < uintAmount);
+            // TODO check for overflows
         }
         
         EmitTokenUpdate(
