@@ -172,7 +172,7 @@ contract AssetBackedTokens
     // transfer tokens from one tokenHolder to another where the sending token holder has allowed the transaction originator
     function transferFrom(address sendingTokenHolder, address receivingTokenHolder, uint amount) external
     {
-        require(amount <= tokenAccounts[sendingTokenHolder].allowed[msg.sender]);
+        require(tokenAccounts[sendingTokenHolder].allowed[msg.sender] >= amount);
 
         tokenAccounts[sendingTokenHolder].allowed[msg.sender] -= amount;
 
@@ -182,8 +182,8 @@ contract AssetBackedTokens
     // Process a transfer internally.
     function xfer(address sendingTokenHolder, address receivingTokenHolder, uint amount) internal
     {
-        // transfer amount is required to be less than or equal to the token holder's available tokens
-        require(amount > 0 && amount <= tokenAccounts[sendingTokenHolder].availableTokens);
+        // check the sender has the available tokens
+        require(amount > 0 && tokenAccounts[sendingTokenHolder].availableTokens >= amount);
         // the receiving token holder already has a token account
         require(tokenAccounts[receivingTokenHolder].initialised);
 
@@ -192,6 +192,9 @@ contract AssetBackedTokens
 
         tokenAccounts[sendingTokenHolder].availableTokens -= amount;
         tokenAccounts[receivingTokenHolder].availableTokens += amount;
+
+        // check for overflow
+        assert(tokenAccounts[receivingTokenHolder].availableTokens > amount);
 
         // if assets are being transferred between asset holders
         if (sendingAssetHolder != receivingAssetHolder)
@@ -218,9 +221,6 @@ contract AssetBackedTokens
         // decrease the assets for the sending asset holder
         assetAccounts[sendingAssetHolder].unsettledAssets -= int(amount);
         assetAccounts[sendingAssetHolder].issuedTokens -= amount;
-
-        // check sender's unsettled balances is still positive or zero
-        assert(assetAccounts[sendingAssetHolder].unsettledAssets >= 0);
         
         // increase the assets for the receiving asset holder
         assetAccounts[receivingAssetHolder].unsettledAssets += int(amount);
@@ -302,11 +302,10 @@ contract AssetBackedTokens
                     assert(assetAccounts[assetHolder].settledAssets > uint(unsettledAssets));
                 }
                 else {
+                    assert(assetAccounts[assetHolder].settledAssets >= uint(-unsettledAssets));
+
                     // convert the negative unsettled amount to a positive amount
                     assetAccounts[assetHolder].settledAssets -= uint(-unsettledAssets);
-
-                    // check balance is still positive
-                    assert(assetAccounts[assetHolder].settledAssets > 0);
                 }
                 
                 // reset the unsettled assets back to zero
@@ -368,7 +367,8 @@ contract AssetBackedTokens
             uintAmount = uint(-amount);
 
             // the token holder's available tokens is required to be greater than the amount of tokens being withdrawn
-            assert(tokenAccounts[tokenHolder].availableTokens > uintAmount);
+            assert(assetAccounts[assetHolder].issuedTokens >= uintAmount);
+            assert(tokenAccounts[tokenHolder].availableTokens >= uintAmount);
 
             assetAccounts[assetHolder].issuedTokens -= uintAmount;
             tokenAccounts[tokenHolder].availableTokens -= uintAmount;

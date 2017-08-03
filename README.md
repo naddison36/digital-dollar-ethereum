@@ -9,10 +9,10 @@ A [blockchain contract](#blockchain-contract) that facilitates the exchange of a
 
 **Direct debits** can also be supported like traditional payment systems. One advantage over traditional technology is debit limits that can be dynamically set by the debtor to each of their creditors. Coordinating debit limits between banks in real time is just too hard to achieve without a consensus layer with signed transactions.
 
-**Escrow** of a fiat currency is expensive and time-consuming using traditional means but can be done easily on a distributed ledger. asset-backed tokens can be entrusted to a third party or a smart contract which will only execute when certain conditions have been met. It's also possible to setup multi signature escrows where m of n parties need to sign a transaction for the asset-backed tokens to be released.
+**Escrow** of a fiat currency is expensive and time-consuming using traditional means but can be done easily on a distributed ledger. Asset-backed tokens can be entrusted to a third party or a smart contract which will only execute when certain conditions have been met. It's also possible to setup multi signature escrows where m of n parties need to sign a transaction for the asset-backed tokens to be released.
 
 ## Delivery versus payment
-When combined with other asset backed tokens on a distributed ledger, assets can be exchanged for fiat currency in one atomic transaction. That is, the distributed ledger ensures a payment is made for the delivery of an asset.
+When combined with other asset-backed tokens on a distributed ledger, assets can be exchanged for fiat currency in one atomic transaction. That is, the distributed ledger ensures a payment is made for the delivery of an asset.
 
 ## Programmable money
 When combined with smart contracts, payments can be made on conditions being met. This could be on condition of another transaction or elapsed time.
@@ -65,7 +65,7 @@ Blockchain Contract | is code deployed to the blockchain that maintains the asse
 
 #### Blockchain Contract
 * Ensures asset holders can not issue more asset-backed tokens to their customers, the token holders, than the assets they have held in their account at the settlement institution.
-* Ensures the sending token holder has enough asset-backed tokens when transferring tokens to another token holders.
+* Ensures the sending token holder has enough asset-backed tokens when transferring tokens to other token holders.
 * Reports the amounts to be settled between asset holders
 
 ## Processes
